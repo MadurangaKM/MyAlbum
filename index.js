@@ -8,7 +8,7 @@ export default class MyAlbum extends Component {
     return (
       <View>
          <Statusbar />
-         <Header />
+         <Header headerText={'MyAlbum'} />
       </View>
     );
   }
