@@ -10,7 +10,7 @@ export default class Button extends Component {
         >
 
       <View >
-          <Text style={styles.text}>BUY NOW</Text>
+          <Text style={styles.text}>{this.props.btnText}</Text>
         
      </View>
      </TouchableOpacity>

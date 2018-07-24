@@ -31,7 +31,10 @@ export default class AlbumDetail extends Component {
           source={{ uri: this.props.album.image }}
           style={styles.albumImage} 
           />
-        <Button onPress={() => Linking.openURL(this.props.album.url)} />
+        <Button 
+          onPress={() => Linking.openURL(this.props.album.url)}
+          btnText={'BUY NOW'}
+        />
 
         </View>
 
