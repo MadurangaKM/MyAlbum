@@ -7,7 +7,7 @@ import AlbumList from '../MyAlbum/src/components/AlbumList';
 export default class MyAlbum extends Component {
   render() {
     return (
-      <View>
+      <View style={{ flex: 1 }} >
          <Statusbar />
          <Header headerText={'MyAlbum'} />
          <AlbumList />
@@ -15,5 +15,6 @@ export default class MyAlbum extends Component {
     );
   }
 }
+
 
 AppRegistry.registerComponent('MyAlbum', () => MyAlbum);
