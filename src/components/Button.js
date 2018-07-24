@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 
+
 export default class Button extends Component {
   render() {
     return (
@@ -8,11 +9,13 @@ export default class Button extends Component {
         onPress={this.props.onPress}
         style={styles.containerStyle}
         >
+       
 
       <View >
           <Text style={styles.text}>{this.props.btnText}</Text>
         
      </View>
+    
      </TouchableOpacity>
     );
   }
@@ -20,7 +23,7 @@ export default class Button extends Component {
 
 const styles = StyleSheet.create({
     containerStyle: {
-        backgroundColor: '#3498db',
+        backgroundColor: '#2F80ED',
         width: '96%',
         height: 40,
         marginTop: 10,

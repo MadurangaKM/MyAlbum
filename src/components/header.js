@@ -1,12 +1,17 @@
 import React, { Component } from 'react';
 import { View, StyleSheet, Text } from 'react-native';
+import LinearGradient from 'react-native-linear-gradient';
 
 export default class Header extends Component {
   render() {
     return (
-      <View style={styles.hearder} >
+      <View>
+            <LinearGradient colors={['#56CCF2', '#2F80ED']} style={styles.hearder} >
+
         <Text style={styles.title}> {this.props.headerText}</Text>
+        </LinearGradient>
       </View>
+      
     );
   }
 }
