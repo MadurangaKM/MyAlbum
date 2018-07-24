@@ -4,7 +4,10 @@ import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 export default class Button extends Component {
   render() {
     return (
-        <TouchableOpacity style={styles.containerStyle}>
+        <TouchableOpacity 
+        onPress={this.props.onPress}
+        style={styles.containerStyle}
+        >
 
       <View >
           <Text style={styles.text}>BUY NOW</Text>
