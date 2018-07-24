@@ -1,15 +1,71 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { Text, View, StyleSheet, Image } from 'react-native';
+import Card from './Card';
+import CardSection from './CardSection';
 
 
 export default class AlbumDetail extends Component {
     render() {
     return (
-      <View>
-          <Text>{this.props.album.title}</Text>
-      </View>
+      <Card>
+      
+        <CardSection>
+          <View style={styles.imageContainer}>
+            <Image 
+            style={styles.thumbmail}
+            source={{ uri: this.props.album.thumbnail_image }} 
+            />
+          </View>
+          <View style={styles.textContainer}>
+            <Text
+            style={styles.albumTitle}
+            >{this.props.album.title}</Text>
+            <Text
+            style={styles.albumArtist}
+            >{this.props.album.artist}</Text>
+          </View>
+        </CardSection>
+        <View style={styles.albumImageContainer} >
+          <Image 
+          source={{ uri: this.props.album.image }}
+          style={styles.albumImage} 
+          />
+        </View>
+
+      </Card>
     );
   }
 }
+
+const styles = StyleSheet.create({
+  textContainer: {
+    flexDirection: 'column',
+   // justifyContent: 'space-around',
+  },
+  thumbmail: {
+    width: 50,
+    height: 50
+  },
+  imageContainer: {
+    margin: 5,
+    marginRight: 10
+  },
+  albumTitle: {
+    fontSize: 20,
+    fontWeight: '800',
+  },
+  albumArtist: {
+    fontSize: 16,
+    paddingTop: 3,
+  },
+  albumImage: {
+    width: 300,
+    height: 300,
+  },
+  albumImageContainer: {
+    paddingTop: 10,
+    alignItems: 'center',
+  }
+});
 module.exports = AlbumDetail;
 /* eslint-disable eol-last */
