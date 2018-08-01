@@ -10,8 +10,8 @@ export default class MyAlbum extends Component {
     return (
       <View style={{ flex: 1 }} >
         <Statusbar />
-         {/* <Header headerText={'MyAlbum'} /> */}
-         {/* <AlbumList /> */}
+         {/* <Header headerText={'MyAlbum'} />
+          <AlbumList /> */}
          <Login />
       </View>
     );

@@ -1,23 +1,50 @@
 /* eslint-disable global-require */
 
 import React, { Component } from 'react';
-import { View, StyleSheet, Image, Text, KeyboardAvoidingView } from 'react-native';
+import { View, StyleSheet, Image, Text, KeyboardAvoidingView, } from 'react-native';
+import firebase from 'firebase';
+import * as Animatable from 'react-native-animatable';
 import Button from '../components/Button';
 import TextFiled from '../components/TextField';
 
+
 export default class Login extends Component {
+    componentWillMount() {
+        firebase.initializeApp({
+            apiKey: 'AIzaSyCOtM8gfFm1EUbISLurBjM-q2ro1OeTUKk',
+            authDomain: 'myalbum-73ff9.firebaseapp.com',
+            databaseURL: 'https://myalbum-73ff9.firebaseio.com',
+            projectId: 'myalbum-73ff9',
+            storageBucket: 'myalbum-73ff9.appspot.com',
+            messagingSenderId: '31964886502'
+
+
+        });
+    }
   render() {
     return (
         <View style={styles.containerStyle} >
-        <View style={styles.containerLogoStyle}>
+        <Animatable.View 
+            animation="zoomIn" iterationCount={1}
+            style={styles.containerLogoStyle}
+
+        >
             <Image 
                 source={require('../img/logo.png')}
                 style={styles.Image}
             />
-        </View>
+        </Animatable.View >
+        
         <KeyboardAvoidingView
             behavior='padding'
+
+
+        >
+        <Animatable.View
+            animation="slideInUp" iterationCount={1}
             style={styles.from}
+
+
         >
             <TextFiled 
                 placeHold='Enter Username'
@@ -35,11 +62,14 @@ export default class Login extends Component {
                 ref={'passwordnext'}
 
             />
-            
+              
             <Button btnText={'LOGIN'} />
             <Text style={styles.Text}>Copyright by MaduDesign</Text>
+            </Animatable.View>
 
         </KeyboardAvoidingView>
+       
+
      </View>
     );
   }
@@ -54,7 +84,7 @@ const styles = StyleSheet.create({
     containerLogoStyle: {
         justifyContent: 'center',
         alignItems: 'center',
-        flex: 0.7,
+        flex: 0.97,
        
     },
     Image: {
@@ -66,13 +96,10 @@ const styles = StyleSheet.create({
     from: {
         alignItems: 'center',
         margin: 10,
-        flex: 0.3,
-
-
     },
     Text: {
         marginTop: 10,
-        color: '#8B8B8B',
+        color: '#818181',
     }
 });
 
