@@ -10,6 +10,8 @@ export default class TextField extends Component {
     return (
   
           <TextInput 
+            value={this.props.value}
+            onChangeText={this.props.onChangeText}
             placeholder={this.props.placeHold}
             style={styles.containerStyle}
             placeholderTextColor='#727272'

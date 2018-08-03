@@ -9,18 +9,31 @@ import TextFiled from '../components/TextField';
 
 
 export default class Login extends Component {
+    state = { email: '', password: '', error: '' };
     componentWillMount() {
         firebase.initializeApp({
-            apiKey: 'AIzaSyCOtM8gfFm1EUbISLurBjM-q2ro1OeTUKk',
-            authDomain: 'myalbum-73ff9.firebaseapp.com',
-            databaseURL: 'https://myalbum-73ff9.firebaseio.com',
-            projectId: 'myalbum-73ff9',
-            storageBucket: 'myalbum-73ff9.appspot.com',
-            messagingSenderId: '31964886502'
-
+            apiKey: 'AIzaSyDx69fXzDPdEja8l2BgjOcqpcD3yzCgl4g',
+            authDomain: 'myalbum-70f93.firebaseapp.com',
+            databaseURL: 'https://myalbum-70f93.firebaseio.com',
+            projectId: 'myalbum-70f93',
+            storageBucket: '',
+            messagingSenderId: '56849266864'
 
         });
     }
+    onButtonPress() {
+        const { email, password } = this.state;
+        this.setState({ error: '' });
+        firebase.auth().signInWithEmailAndPassword(email, password)
+            .catch(() => {
+                firebase.auth().createUserWithEmailAndPassword(email, password)
+                .catch((error) => {
+                    this.setState({ error: error.message });
+                    console.log(error);
+                });
+            });  
+        }
+    
   render() {
     return (
         <View style={styles.containerStyle} >
@@ -46,7 +59,13 @@ export default class Login extends Component {
 
 
         >
-            <TextFiled 
+        <View style={styles.errorView}>
+          <Text style={styles.errorText}>{this.state.error}</Text>
+          </View>
+            <TextFiled
+                value={this.state.email}
+                onChangeText={email => this.setState({ email })}
+
                 placeHold='Enter Username'
                 returnKeyType='next'
                 autoCapitalize='none'
@@ -54,16 +73,23 @@ export default class Login extends Component {
                
             />
             <TextFiled 
+                value={this.state.password}
+                onChangeText={password => this.setState({ password })}
+
                 placeHold='Password' 
                 secureTextEntry
                 returnKeyType='go'
                 autoCapitalize='none'
                 autoCorrect={false}
                 ref={'passwordnext'}
+                onSubmitEditing={this.onButtonPress.bind(this)}
 
             />
-              
-            <Button btnText={'LOGIN'} />
+            
+            <Button 
+                btnText={'LOGIN'}
+                onPress={this.onButtonPress.bind(this)}
+            />
             <Text style={styles.Text}>Copyright by MaduDesign</Text>
             </Animatable.View>
 
@@ -100,6 +126,13 @@ const styles = StyleSheet.create({
     Text: {
         marginTop: 10,
         color: '#818181',
+    },
+    errorText: {
+        color: '#e74c3c',
+        paddingTop: 10,
+        fontSize: 18,
+        fontWeight: 'bold',
+      
     }
 });
 
