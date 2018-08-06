@@ -17,6 +17,7 @@ const styles = StyleSheet.create({
         justifyContent: 'flex-start',
         borderBottomColor: '#2980b9',
         borderBottomWidth: 3,
+        backgroundColor: 'white'
         
     
     }

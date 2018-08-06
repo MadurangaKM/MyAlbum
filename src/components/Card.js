@@ -17,7 +17,7 @@ export default class Card extends Component {
 
 const styles = StyleSheet.create({
     containerStyle: {
-        backgroundColor: '#FFF',
+        backgroundColor: 'white',
         padding: 10,
         marginLeft: 20,
         marginRight: 20,

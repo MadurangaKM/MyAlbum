@@ -73,7 +73,7 @@ export default class Login extends Component {
         </Animatable.View >
         
         <KeyboardAvoidingView
-            behavior='padding'
+            behavior='position'
 
 
         >
@@ -131,7 +131,7 @@ export default class Login extends Component {
 
 const styles = StyleSheet.create({
     containerStyle: {
-        backgroundColor: '#FFFF',
+        backgroundColor: 'white',
         flex: 1,
     },
     containerLogoStyle: {
@@ -141,14 +141,15 @@ const styles = StyleSheet.create({
        
     },
     Image: {
-        width: 220,
-        height: 140,
+        width: 190,
+        height: 120,
         
         
     },
     from: {
         alignItems: 'center',
         margin: 10,
+        backgroundColor: '#FFF'
     },
     Text: {
         marginTop: 10,

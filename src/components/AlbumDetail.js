@@ -27,10 +27,14 @@ export default class AlbumDetail extends Component {
           </View>
         </CardSection>
         <View style={styles.albumImageContainer} >
+       
           <Image 
           source={{ uri: this.props.album.image }}
           style={styles.albumImage} 
+            
           />
+       
+
         <Button 
           onPress={() => Linking.openURL(this.props.album.url)}
           btnText={'BUY NOW'}
@@ -52,7 +56,7 @@ const styles = StyleSheet.create({
   },
   imageContainer: {
     margin: 5,
-    marginRight: 10
+    marginRight: 10,
   },
   albumTitle: {
     fontSize: 20,
@@ -63,12 +67,13 @@ const styles = StyleSheet.create({
     paddingTop: 3,
   },
   albumImage: {
-    width: 300,
-    height: 300,
+    width: 260,
+    height: 260,
   },
   albumImageContainer: {
     paddingTop: 10,
     alignItems: 'center',
+    flex: 1,
   }
 });
 module.exports = AlbumDetail;
