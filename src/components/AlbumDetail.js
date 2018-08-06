@@ -35,9 +35,7 @@ export default class AlbumDetail extends Component {
           onPress={() => Linking.openURL(this.props.album.url)}
           btnText={'BUY NOW'}
         />
-
         </View>
-
       </Card>
     );
   }

@@ -1,12 +1,16 @@
 import React, { Component } from 'react';
-import { View, StyleSheet } from 'react-native';
+import { StyleSheet } from 'react-native';
+import * as Animatable from 'react-native-animatable';
 
 export default class Card extends Component {
   render() {
     return (
-      <View style={styles.containerStyle} >
+      <Animatable.View 
+        style={styles.containerStyle} 
+        animation="zoomIn" iterationCount={1}
+      >
       {this.props.children}
-     </View>
+     </Animatable.View>
     );
   }
 }

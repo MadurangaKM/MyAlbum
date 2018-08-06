@@ -27,9 +27,7 @@ export default class AlbumList extends Component {
         );
       }  
         return this.state.albums.map(album => 
-         
             <AlbumDetail key={album.title} album={album} />
-          
         );
     }
 
@@ -47,8 +45,6 @@ const styles = StyleSheet.create({
         paddingTop: 20,
         textAlign: 'center',
     },
-
-   
 });
 module.exports = AlbumList;
 /* eslint-disable eol-last */

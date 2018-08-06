@@ -1,39 +1,63 @@
 /* eslint-disable global-require */
 
 import React, { Component } from 'react';
-import { View, StyleSheet, Image, Text, KeyboardAvoidingView, } from 'react-native';
+import { View, StyleSheet, Image, Text, KeyboardAvoidingView, TouchableOpacity } 
+from 'react-native';
 import firebase from 'firebase';
 import * as Animatable from 'react-native-animatable';
 import Button from '../components/Button';
 import TextFiled from '../components/TextField';
+import Loading from '../components/Loading';
 
 
 export default class Login extends Component {
-    state = { email: '', password: '', error: '' };
-    componentWillMount() {
-        firebase.initializeApp({
-            apiKey: 'AIzaSyDx69fXzDPdEja8l2BgjOcqpcD3yzCgl4g',
-            authDomain: 'myalbum-70f93.firebaseapp.com',
-            databaseURL: 'https://myalbum-70f93.firebaseio.com',
-            projectId: 'myalbum-70f93',
-            storageBucket: '',
-            messagingSenderId: '56849266864'
+    state = { email: '', password: '', error: '', loading: false };
 
-        });
-    }
-    onButtonPress() {
+     onButtonPress() {
         const { email, password } = this.state;
-        this.setState({ error: '' });
+        this.setState({ error: '', loading: true });
         firebase.auth().signInWithEmailAndPassword(email, password)
-            .catch(() => {
-                firebase.auth().createUserWithEmailAndPassword(email, password)
-                .catch((error) => {
-                    this.setState({ error: error.message });
-                    console.log(error);
-                });
+            .then(this.onLoginSuccess.bind(this))
+            .catch((error) => {
+                this.setState({ error: error.message, loading: false });
+                console.log(error);  
             });  
         }
-    
+    onButtonPressSignUp() {
+        const { email, password } = this.state;
+        this.setState({ error: '', loading: true });
+        firebase.auth().createUserWithEmailAndPassword(email, password)
+        .then(this.onLoginSuccess.bind(this))
+        .catch((error) => {
+            this.setState({ error: error.message, loading: false });
+            console.log(error);
+        });
+    }
+        onLoginSuccess() {
+            this.setState({
+                email: '',
+                password: '',
+                loading: false,
+                error: '',
+
+            });
+        }
+        
+        renderButton() {
+            if (this.state.loading) {
+                return (
+                    <Loading size="small" /> 
+                 
+                );
+            }
+            return (
+                <Button 
+                btnText={'LOGIN'}
+                onPress={this.onButtonPress.bind(this)}
+                />
+            );
+        }
+       
   render() {
     return (
         <View style={styles.containerStyle} >
@@ -86,10 +110,13 @@ export default class Login extends Component {
 
             />
             
-            <Button 
-                btnText={'LOGIN'}
-                onPress={this.onButtonPress.bind(this)}
-            />
+            {this.renderButton()}
+
+            <TouchableOpacity
+                onPress={this.onButtonPressSignUp.bind(this)}
+            >
+            <Text style={styles.signUp}>Don't have a Account? Sign Up</Text>
+            </ TouchableOpacity>
             <Text style={styles.Text}>Copyright by MaduDesign</Text>
             </Animatable.View>
 
@@ -130,9 +157,14 @@ const styles = StyleSheet.create({
     errorText: {
         color: '#e74c3c',
         paddingTop: 10,
+        fontSize: 15,
+      
+    },
+    signUp: {
+        marginTop: 10,
+        color: '#2F80ED',
         fontSize: 18,
         fontWeight: 'bold',
-      
     }
 });
 

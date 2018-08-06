@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
-    "test": "jest"
+    "test": "jest",
+    "ios-react": "react-native bundle --platform ios --dev false --entry-file index.js --bundle-output ios/MyAlbum/main.jsbundle --assets-dest ios && react-native run-ios --udid 3bddb4ad53b715b0abfe70199eea4f107d70cff2"
   },
   "dependencies": {
     "axios": "^0.18.0",
