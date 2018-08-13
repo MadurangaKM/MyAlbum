@@ -32,7 +32,7 @@ renderContent() {
   switch (this.state.loginIn) {
     case true:
       return (
-        <View style={{ flex: 1 }}>
+        <View style={{ flex: 1, backgroundColor: 'white' }}>
          <Header headerText={'MyAlbum'} />
         <AlbumList />
         </View>
